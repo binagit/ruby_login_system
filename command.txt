@@ -1,0 +1,2 @@
+mysqladmin create db_login
+mysql db_login < login.sql
