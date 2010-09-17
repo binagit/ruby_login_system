@@ -1,6 +1,14 @@
 #!/usr/bin/ruby
 
+require "logger";
 require "cgi";
+
+
+logger          = Logger.new('log/ruby_login_system.log', 5);
+logger.level    = Logger::INFO;
+logger.progname = __FILE__; 
+
+logger.info{ 'start' }
 
 html = {};
 cgi  = CGI.new;
@@ -35,7 +43,11 @@ html = {
 
 
 if( cgi['bad'] == 1.to_s ) then
+  logger.info{ 'ユーザ名またはパスワードが不正' }
   cgi.out(html[:header]){ html.values_at(:head, :bad_message, :body, :foot).join("\n") }
 else
+  logger.info{ 'ユーザ用エラーメッセージなし' }
   cgi.out(html[:header]){ html.values_at(:head, :body, :foot).join("\n") }
 end
+
+logger.info{ 'end' }

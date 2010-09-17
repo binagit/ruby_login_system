@@ -1,0 +1,22 @@
+# Logfile created on Fri Sep 17 20:01:19 +0900 2010 by /
+I, [2010-09-17T20:01:19.438733 #43563]  INFO -- : start
+I, [2010-09-17T20:01:21.023692 #43563]  INFO -- : ユーザ用エラーメッセージなし
+I, [2010-09-17T20:01:21.024515 #43563]  INFO -- : end
+I, [2010-09-17T20:02:49.288035 #43569]  INFO -- index.cgi: start
+I, [2010-09-17T20:02:50.817783 #43569]  INFO -- index.cgi: ユーザ用エラーメッセージなし
+I, [2010-09-17T20:02:50.818600 #43569]  INFO -- index.cgi: end
+I, [2010-09-17T20:10:12.524866 #43589]  INFO -- login.cgi: start
+I, [2010-09-17T20:10:14.804975 #43589]  INFO -- login.cgi: index.cgi?bad=1に遷移
+I, [2010-09-17T20:10:14.805365 #43589]  INFO -- login.cgi: end
+I, [2010-09-17T20:10:35.673052 #43592]  INFO -- login.cgi: start
+I, [2010-09-17T20:10:37.962138 #43592]  INFO -- login.cgi: index.cgi?bad=1に遷移
+I, [2010-09-17T20:10:37.962342 #43592]  INFO -- login.cgi: end
+I, [2010-09-17T20:10:58.753605 #43594]  INFO -- login.cgi: start
+D, [2010-09-17T20:11:00.258271 #43594] DEBUG -- login.cgi:  
+I, [2010-09-17T20:11:00.258638 #43594]  INFO -- login.cgi: index.cgi?bad=1に遷移
+I, [2010-09-17T20:11:00.258815 #43594]  INFO -- login.cgi: end
+I, [2010-09-17T20:15:17.411195 #43604]  INFO -- welcome.cgi: start
+I, [2010-09-17T20:15:18.988523 #43604]  INFO -- welcome.cgi:  session['user']が空なのでindex.cgiに遷移' 
+I, [2010-09-17T20:15:18.988700 #43604]  INFO -- welcome.cgi: end
+I, [2010-09-17T20:17:05.333297 #43611]  INFO -- logout.cgi: satart
+I, [2010-09-17T20:17:06.927521 #43611]  INFO -- logout.cgi: end
