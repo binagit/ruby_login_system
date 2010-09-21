@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-style-type" content="text/css">
+    <link rel=stylesheet type="text/css" href="CentOS_install.css">
+    <title>CentOSでの環境構築方法</title>
+  </head>
+
+  <body>
+    <h1>CentOSでの環境構築方法</h1>
+    <p>
+      ruby_login_systemをCentOSで使うための環境構築方法を以下に示します.
+    </p>
+
+    <h2>github</h2>
+    <ul>
+      <li><a href="http://github.com/binagit/ruby_login_system">github</a>
+    </ul>
+
+    <h2>必要なもの</h2>
+
+    <ul>
+      <li>Git</li>
+      <li>Ruby</li>
+      <li>MySQL</li>
+      <li>MySQL/Ruby</li>
+      <li>Apache</li>
+    </ul>
+
+    <h2>Git</h2>
+    <p> Gitは必須ではありませんが、環境構築の際にオリジナルの設定ファイルなどを保存しておくために使います。</p>
+
+    <h3>リポジトリ追加</h3>
+    <p> デフォルトのyumのリポジトリにはgitが入っていないためインストールできない。 </p>
+    <p> /etc/yum.repos.d/CentOS-Base.repoの末尾に以下の内容を追記 </p>
+    <pre class="code">
+[dag]
+name=Dag RPM Repository for Redhat EL5
+baseurl=http://apt.sw.be/redhat/el$releasever/en/$basearch/dag
+gpgcheck=1
+enabled=1
+gpgkey=http://dag.wieers.com/packages/RPM-GPG-KEY.dag.txt
+</pre>
+
+    <h3>インストール</h3>
+    <pre class="code">
+# yum install git
+</pre>
+
+
+    <h2>Ruby</h2>
+    <p>すでにインストールされているので省略</p>
+
+    <h2>MySQL</h2>
+    <h3>インストール</h3>
+
+    <pre class="code">
+# yum -y install mysql-server
+</pre>
+
+    <h3>/etc/my.cnf変更</h3>
+
+    <pre class="code">
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+user=mysql
+# Default to using old password format for compatibility with mysql 3.x
+# clients (those using the mysqlclient10 compatibility package).
+old_passwords=1
+
+# Disabling symbolic-links is recommended to prevent assorted security risks;
+# to do so, uncomment this line:
+# symbolic-links=0
+default-character-set = utf8             <= 追加
+
+[mysql]                                  <= 追加
+default-character-set = utf8             <= 追加
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+</pre>
+
+
+
+
+
+
+    <h2>MySQL/Ruby</h2>
+    <h3>mysql-devel</h3>
+    <p>MySQL/Rubyを使うにはmysql-develが必要なのでこれをインストールする</p>
+    <pre class="code">
+# yum install mysql-devel
+</pre>
+    <h3>MySQL/Rubyをインストール</h3>
+    <pre class="code">
+# wget http://rubyforge.org/frs/download.php/69181/mysql-ruby-2.8.2.tar.gz
+</pre>
+<p>mysql-rubyを取得し、展開後</p>
+
+    <pre class="code">
+# ruby extconf.rb --with-mysql-config
+# make
+# make install
+</pre>
+
+
+   <h2>Apache</h2>
+   <h3>インストール</h3>
+    <pre class="code">
+# yum -y install httpd
+</pre>
+
+
+<hr />
