@@ -1,0 +1,56 @@
+------------------------------------------------------
+Ruby で MySql接続
+------------------------------------------------------
+wget http://rubyforge.org/frs/download.php/69181/mysql-ruby-2.8.2.tar.gz
+yum install mysql-devel
+ruby extconf.rb --with-mysql-config
+make
+make install
+
+------------------------------------------------------
+Git
+------------------------------------------------------
+/etc/yum.repos.d/CentOS-Base.repoの末尾に以下の内容を追記
+
+[dag]
+name=Dag RPM Repository for Redhat EL5
+baseurl=http://apt.sw.be/redhat/el$releasever/en/$basearch/dag
+gpgcheck=1
+enabled=1
+gpgkey=http://dag.wieers.com/packages/RPM-GPG-KEY.dag.txt
+
+yum install git
+
+
+------------------------------------------------------
+ApacheにSSL接続
+------------------------------------------------------
+
+------------------------------------------------------
+Mysql
+------------------------------------------------------
+yum -y install mysql-server
+
+/etc/my.cnfを以下のように変更
+
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+user=mysql
+# Default to using old password format for compatibility with mysql 3.x
+# clients (those using the mysqlclient10 compatibility package).
+old_passwords=1
+
+# Disabling symbolic-links is recommended to prevent assorted security risks;
+# to do so, uncomment this line:
+# symbolic-links=0
+default-character-set = utf8
+
+[mysql]
+default-character-set = utf8
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+
+
