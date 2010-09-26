@@ -1,0 +1,28 @@
+<html>
+<head><titel>ログイン</title></head>
+<body>
+
+<% 
+if( cgi['bad'] == 1.to_s ) then
+  logger.info{ 'ユーザ名またはパスワードが不正' }
+%>
+<%= html[:bad_message]  %>
+<%
+else
+  logger.info{ 'ユーザ用エラーメッセージなし' }
+end
+%>
+
+<form action="login.cgi" method="post">
+<table width="300" border="0" cellspacing="0" cellpadding="2">
+<tr><td>ユーザ名:</td><td><input type="text" name="user" /></td></tr>
+<tr><td>パスワード：</td><td><input type="password" name="password" /></td></tr>
+tr><td colspan="2"><center><input type="submit" value="ログイン" /></center></td></tr>
+</table>
+</form>
+
+</body>
+</html>
+
+
+
